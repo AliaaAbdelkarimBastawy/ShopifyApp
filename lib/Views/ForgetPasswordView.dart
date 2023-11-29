@@ -20,7 +20,7 @@ class ForgetPasswordView extends StatelessWidget {
           children: [
             const Center(child: Padding(
               padding: EdgeInsets.only(bottom: 32),
-              child: Text("Enter your Password", style:
+              child: Text("Enter your Email", style:
               TextStyle(fontWeight: FontWeight.bold, fontSize: 26,),),
             )),
             TextFormField(
