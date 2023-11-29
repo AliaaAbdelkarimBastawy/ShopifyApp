@@ -2,15 +2,8 @@
 
 A new Flutter project.
 
-## Getting Started
+-Task 1 is about creating Login/signUp/ForgotPassword Screens
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<img width="416" alt="SignUp" src="https://github.com/AliaaAbdelkarimBastawy/ShopifyApp/assets/149010952/1dcf5b43-b4f9-4469-b6c7-feb7dbbb9d4d">
+<img width="425" alt="Login" src="https://github.com/AliaaAbdelkarimBastawy/ShopifyApp/assets/149010952/0009ab95-6da3-4a1b-9f51-414399c13c51">
+<img width="391" alt="ForgPass" src="https://github.com/AliaaAbdelkarimBastawy/ShopifyApp/assets/149010952/fdcb6ded-eb64-49fc-b400-ba19492a2eb5">
