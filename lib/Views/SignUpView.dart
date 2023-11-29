@@ -59,14 +59,19 @@ class SignUpView extends StatelessWidget {
             const Text("By creating an account you agree to our",
               style: TextStyle(fontSize: 12),),
             const SizedBox(height: 2,),
-            const Row(
+             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text("Terms of Services", style: TextStyle(fontSize: 12,color:Color(0XFFFF6A6A) ),),
-                SizedBox(width: 4,),
-                Text("and", style: TextStyle(fontSize: 12,),),
-                SizedBox(width: 4,),
-                Text("Privacy Policy", style: TextStyle(fontSize: 12, color:Color(0XFFFF6A6A) ),),
+                GestureDetector(
+                  onTap: (){},
+                  child: const Text("Terms of Services",
+                    style: TextStyle(fontSize: 12,color:Color(0XFFFF6A6A) ),),
+                ),
+                const SizedBox(width: 4,),
+                const Text("and", style: TextStyle(fontSize: 12,),),
+                const SizedBox(width: 4,),
+                GestureDetector(onTap: (){},
+                    child: const Text("Privacy Policy", style: TextStyle(fontSize: 12, color:Color(0XFFFF6A6A) ),)),
 
               ],),
           ],
