@@ -4,6 +4,7 @@ A new Flutter project.
 
 -Task 1 is about creating Login/signUp/ForgotPassword Screens
 
-<img width="416" alt="SignUp" src="https://github.com/AliaaAbdelkarimBastawy/ShopifyApp/assets/149010952/1dcf5b43-b4f9-4469-b6c7-feb7dbbb9d4d">
-<img width="425" alt="Login" src="https://github.com/AliaaAbdelkarimBastawy/ShopifyApp/assets/149010952/0009ab95-6da3-4a1b-9f51-414399c13c51">
-<img width="391" alt="ForgPass" src="https://github.com/AliaaAbdelkarimBastawy/ShopifyApp/assets/149010952/fdcb6ded-eb64-49fc-b400-ba19492a2eb5">
+![SignUp 2](https://github.com/AliaaAbdelkarimBastawy/ShopifyApp/assets/149010952/1a173296-b803-4303-855c-b808a42ce54d)
+![Login 1](https://github.com/AliaaAbdelkarimBastawy/ShopifyApp/assets/149010952/721e4491-cdca-4d94-944c-5b51fa413fe3)
+![ForgPass 1](https://github.com/AliaaAbdelkarimBastawy/ShopifyApp/assets/149010952/4bd74976-d63a-47dc-9474-cd23a49ae698)
+
