@@ -46,8 +46,8 @@ class LoginView extends StatelessWidget {
               TextButton(onPressed: (){
                 Navigator.push(context,
                     MaterialPageRoute(builder: (builder)=> const ForgetPasswordView()));
-              }, child:const Text("Forgot your password?", style: TextStyle(fontSize: 12,
-                  fontWeight: FontWeight.bold,
+              }, child:const Text("Forgot your password?",
+                style: TextStyle(fontSize: 14,
                   color:Color(0XFFFF6A6A) ),),)
               ],),
             const SizedBox(height: 16,),
