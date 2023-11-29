@@ -48,7 +48,7 @@ class SignUpView extends StatelessWidget {
               ),
               validator: (value) {
                 if (value == "") {
-                  return 'Please enter a password';
+                  return 'Please enter a username';
                 }
                 return null;
               },
@@ -81,7 +81,7 @@ class SignUpView extends StatelessWidget {
               ),
               validator: (value) {
                 if (value == "") {
-                  return 'Please enter a password';
+                  return 'Please enter an email';
                 }
                 return null;
               },
@@ -141,7 +141,7 @@ class SignUpView extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
               const Text("Already have an account?", style: TextStyle(fontSize: 16),),
-                const SizedBox(width: 4,),
+
               TextButton(onPressed: (){
                 Navigator.push(context, MaterialPageRoute(builder:
                     (builder)=> const LoginView()));

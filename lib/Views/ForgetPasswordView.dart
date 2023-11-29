@@ -9,7 +9,11 @@ class ForgetPasswordView extends StatelessWidget {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: const Color(0xFFF5F6F8),
-      appBar: AppBar(elevation: 0, backgroundColor: const Color(0xFFF5F6F8),),
+      appBar: AppBar(
+        iconTheme: const IconThemeData(
+          color: Colors.black, //change your color here
+        ),
+        elevation: 0, backgroundColor: const Color(0xFFF5F6F8),),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
