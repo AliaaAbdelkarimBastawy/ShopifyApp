@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../components/CustomisedBtn.dart';
+import '../components/CustomisedTxtFormField.dart';
 import 'LoginView.dart';
 
 class SignUpView extends StatelessWidget {
@@ -8,6 +10,9 @@ class SignUpView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController usernameController = TextEditingController();
+    TextEditingController emailController = TextEditingController();
+    TextEditingController passwordController = TextEditingController();
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: const Color(0xFFF5F6F8),
@@ -21,121 +26,22 @@ class SignUpView extends StatelessWidget {
               child: Text("Sign Up", style:
               TextStyle(fontWeight: FontWeight.bold, fontSize: 26,),),
             )),
-            TextFormField(
-              keyboardType: TextInputType.text,
-              decoration: InputDecoration(
-                filled: true,
-                fillColor: Colors.white,
-                labelStyle: const TextStyle(color: Colors.black,),
-                labelText: "Username",
-                prefixIcon: const Icon(Icons.person_2_outlined, color: Colors.black,),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(color: Color(0xFFD2D4D6)),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(color: Color(0xFFD2D4D6)),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                errorBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(color: Colors.red),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                focusedErrorBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(color: Colors.red),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-              ),
-              validator: (value) {
-                if (value == "") {
-                  return 'Please enter a username';
-                }
-                return null;
-              },
-            ),
+            CustomisedTxtFormField(labelTxt: "Username",
+              txtEditingController: usernameController,
+              prefixIcon: Icons.person_2_outlined,
+              txtInputType: TextInputType.text,),
             const SizedBox(height: 16,),
-            TextFormField(
-              keyboardType: TextInputType.emailAddress,
-              decoration: InputDecoration(
-                filled: true,
-                fillColor: Colors.white,
-                labelStyle: const TextStyle(color: Colors.black,),
-                labelText: "Email",
-                prefixIcon: const Icon(Icons.email_outlined, color: Colors.black,),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(color: Color(0xFFD2D4D6)),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(color: Color(0xFFD2D4D6)),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                errorBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(color: Colors.red),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                focusedErrorBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(color: Colors.red),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-              ),
-              validator: (value) {
-                if (value == "") {
-                  return 'Please enter an email';
-                }
-                return null;
-              },
-            ),
+            CustomisedTxtFormField(labelTxt: "Email",
+              txtEditingController: emailController,
+              prefixIcon: Icons.email_outlined,
+              txtInputType: TextInputType.emailAddress,),
             const SizedBox(height: 16,),
-            TextFormField(
-              keyboardType: TextInputType.text,
-              decoration: InputDecoration(
-                filled: true,
-                fillColor: Colors.white,
-                labelStyle: const TextStyle(color: Colors.black,),
-                labelText: "Password",
-                prefixIcon: const Icon(Icons.lock_outline_rounded,
-                  color: Colors.black,),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(color: Color(0xFFD2D4D6)),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(color: Color(0xFFD2D4D6)),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                errorBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(color: Colors.red),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                focusedErrorBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(color: Colors.red),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-              ),
-              validator: (value) {
-                if (value == "") {
-                  return 'Please enter a password';
-                }
-                return null;
-              },
-            ),
+            CustomisedTxtFormField(labelTxt: "Password",
+              txtEditingController: passwordController,
+              prefixIcon: Icons.lock_outline_rounded,
+              txtInputType: TextInputType.text,),
             const SizedBox(height: 16,),
-            SizedBox(
-              width: double.infinity,
-              height: 56,
-              child: ElevatedButton(onPressed: ()  async{
-
-              },
-                style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
-                  elevation: 10,
-                  primary: const Color(0XFFFF6A6A), // Background color
-                ),
-                child: const Text("Sign Up",
-                  style: TextStyle(color: Colors.white,),),
-              ),
-            ),
+            const CustomisedBtn(btnTxt: 'Sign Up', btnColor: Color(0XFFFF6A6A), txtColor: Colors.white,),
             const SizedBox(height: 16,),
              Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -152,16 +58,15 @@ class SignUpView extends StatelessWidget {
             const SizedBox(height: 24,),
             const Text("By creating an account you agree to our",
               style: TextStyle(fontSize: 12),),
+            const SizedBox(height: 2,),
             const Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text("Terms of Services", style: TextStyle(fontSize: 12,
-                    fontWeight: FontWeight.bold, color:Color(0XFFFF6A6A) ),),
+                Text("Terms of Services", style: TextStyle(fontSize: 12,color:Color(0XFFFF6A6A) ),),
                 SizedBox(width: 4,),
                 Text("and", style: TextStyle(fontSize: 12,),),
                 SizedBox(width: 4,),
-                Text("Privacy Policy", style: TextStyle(fontSize: 12,
-                    fontWeight: FontWeight.bold, color:Color(0XFFFF6A6A) ),),
+                Text("Privacy Policy", style: TextStyle(fontSize: 12, color:Color(0XFFFF6A6A) ),),
 
               ],),
           ],

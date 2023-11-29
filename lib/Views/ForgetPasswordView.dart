@@ -1,11 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../components/CustomisedBtn.dart';
+import '../components/CustomisedTxtFormField.dart';
+
 class ForgetPasswordView extends StatelessWidget {
   const ForgetPasswordView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController emailController = TextEditingController();
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: const Color(0xFFF5F6F8),
@@ -23,54 +27,12 @@ class ForgetPasswordView extends StatelessWidget {
               child: Text("Enter your Email", style:
               TextStyle(fontWeight: FontWeight.bold, fontSize: 26,),),
             )),
-            TextFormField(
-              keyboardType: TextInputType.emailAddress,
-              decoration: InputDecoration(
-                filled: true,
-                fillColor: Colors.white,
-                labelStyle: const TextStyle(color: Colors.black,),
-                labelText: "Email",
-                prefixIcon: const Icon(Icons.email_outlined, color: Colors.black,),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(color: Color(0xFFD2D4D6)),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(color: Color(0xFFD2D4D6)),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                errorBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(color: Colors.red),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                focusedErrorBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(color: Colors.red),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-              ),
-              validator: (value) {
-                if (value == "") {
-                  return 'Please enter a password';
-                }
-                return null;
-              },
-            ),
+            CustomisedTxtFormField(labelTxt: "Email",
+              txtEditingController: emailController,
+              prefixIcon: Icons.email_outlined,
+              txtInputType: TextInputType.emailAddress,),
             const SizedBox(height: 16,),
-            SizedBox(
-              width: double.infinity,
-              height: 56,
-              child: ElevatedButton(onPressed: ()  async{
-
-              },
-                style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
-                  elevation: 10,
-                  primary: const Color(0XFFFF6A6A), // Background color
-                ),
-                child: const Text("Reset Password",
-                  style: TextStyle(color: Colors.white,),),
-              ),
-            ),
+            const CustomisedBtn(btnTxt: 'Reset Password', btnColor: Color(0XFFFF6A6A), txtColor: Colors.white,),
             const SizedBox(height: 8,),
           ],
         ),
