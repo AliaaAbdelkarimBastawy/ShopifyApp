@@ -5,18 +5,17 @@ class CustomisedBtn extends StatelessWidget {
   final Color btnColor;
   final String btnTxt;
   final Color txtColor;
+   void Function()? onPressed;
 
-  const CustomisedBtn({Key? key,required this.btnTxt,
-    required this.btnColor, required this.txtColor }) : super(key: key);
+   CustomisedBtn({Key? key,required this.btnTxt,
+    required this.btnColor, required this.txtColor, required this.onPressed }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
       height: 56,
-      child: ElevatedButton(onPressed: ()  async{
-
-      },
+      child: ElevatedButton(onPressed: onPressed,
         style: ElevatedButton.styleFrom(
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
           elevation: 10,

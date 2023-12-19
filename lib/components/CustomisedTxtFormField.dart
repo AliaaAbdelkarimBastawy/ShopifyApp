@@ -5,12 +5,15 @@ class CustomisedTxtFormField extends StatelessWidget {
   final TextEditingController txtEditingController;
   final IconData prefixIcon;
   final TextInputType txtInputType;
-  const CustomisedTxtFormField({Key? key, required this.labelTxt,
-    required this.txtEditingController, required this.prefixIcon, required this.txtInputType}) : super(key: key);
+  String? Function(String?)? validator;
+   CustomisedTxtFormField({Key? key, required this.labelTxt,
+    required this.txtEditingController, required this.prefixIcon,
+    required this.txtInputType, required this.validator}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      validator: validator,
       controller: txtEditingController,
       keyboardType: TextInputType.text,
       decoration: InputDecoration(
