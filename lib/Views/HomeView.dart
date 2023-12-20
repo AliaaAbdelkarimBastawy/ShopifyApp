@@ -13,6 +13,7 @@ import 'package:shopify_app/services/GetCategoryService.dart';
 
 
 
+import '../components/CustomProductsItem.dart';
 import '../main.dart';
 
 class HomeView extends StatefulWidget {
@@ -35,9 +36,9 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:  Colors.white,
+      backgroundColor: const Color(0XFFF3F4F7),
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor:const Color(0XFFF3F4F7),
         actions:const [
           SizedBox(
             height: 24,
@@ -88,16 +89,16 @@ class _HomeViewState extends State<HomeView> {
           padding: const EdgeInsets.only(left: 8, right: 8),
           child: Column(
               children: [
-            const Align(
+                const Align(
                 alignment: Alignment.topLeft,
                 child: Text(
                   "Categories",
                   style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
                 )),
-            const SizedBox(
-              height: 10,
+                const SizedBox(
+              height: 8,
             ),
-            Consumer<Model>(
+                Consumer<Model>(
               builder: (BuildContext context, Model value, Widget? child) {
                 return SizedBox(
                   height: 100,
@@ -116,13 +117,20 @@ class _HomeViewState extends State<HomeView> {
                 );
               },
             ),
-            const SizedBox(
-              height: 20,
-            ),
-            Consumer<Model>(
+                const SizedBox(
+                  height: 10,
+                ),
+                const Align(
+                    alignment: Alignment.topLeft,
+                    child: Text(
+                      "Latest",
+                      style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+                    )),
+                const SizedBox(height: 8,),
+                Consumer<Model>(
               builder: (BuildContext context, Model value, Widget? child) {
                 return SizedBox(
-                  height: 180,
+                  height: 175,
                   child: ListView.builder(
                       itemCount: value.adsList.length,
                       scrollDirection: Axis.horizontal,
@@ -137,6 +145,22 @@ class _HomeViewState extends State<HomeView> {
                 );
               },
             ),
+                const SizedBox(
+                  height: 10,
+                ),
+                SizedBox(
+                  height: 170,
+                  child: ListView.builder(
+                      itemCount: 4,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        return const Padding(
+                          padding: EdgeInsets.only(left: 8.0),
+                          child: CustomProductsItem()
+                        );
+                      }),
+                ),
+
             // const SizedBox(height: 20,),
           ])),
     );

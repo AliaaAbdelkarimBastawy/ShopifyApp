@@ -11,17 +11,55 @@ class CustomAdsItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Stack(
       children: [
         Container(
           decoration: BoxDecoration(
+            image: const DecorationImage(
+                image: AssetImage("assets/images/summer.webp"),
+                fit: BoxFit.cover
+            ),
             borderRadius: BorderRadius.circular(16),
             color: Colors.purple,
           ),
-          height: 120,
-          width: 220,
+          height: 200,
+          width: 300,
+          child: Padding(
+            padding: const EdgeInsets.only(top: 20,left: 16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+               SizedBox(
+                width: 140,
+                child: Text(adsName, style: const TextStyle(fontSize: 18,
+                    color: Colors.white,fontWeight: FontWeight.bold),),
+              ),
+              const SizedBox(height: 10,),
+              Container(
+                height: 40,
+                width: 130,
+                decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(32)
+              ),
+                child: const Padding(
+                  padding: EdgeInsets.all(4.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                    Padding(
+                      padding: EdgeInsets.only(left: 8.0),
+                      child: Text("SEE MORE"),
+                    ),
+                    CircleAvatar(radius: 20,
+                      backgroundColor: Colors.pink,
+                      child: Icon(Icons.arrow_forward_ios_outlined, color: Colors.white,),
+                    ),
+                  ],),
+                ),)
+            ],),
+          )
         ),
-         Text(adsName)
       ],
     );
   }
