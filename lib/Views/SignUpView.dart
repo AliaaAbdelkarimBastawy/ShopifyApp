@@ -7,6 +7,7 @@ import 'package:shopify_app/Views/HomeView.dart';
 import '../components/CustomisedBtn.dart';
 import '../components/CustomisedTxtFormField.dart';
 import '../helper/show_snack_bar.dart';
+import '../services/RegisterUser.dart';
 import 'LoginView.dart';
 
 class SignUpView extends StatefulWidget {
@@ -84,7 +85,7 @@ class _SignUpViewState extends State<SignUpView> {
                        });
                        try
                        {
-                         await RegisterUser(emailController, passwordController);
+                         await RegisterUserService.RegisterUser(emailController, passwordController);
                          Navigator.pushNamed(context, HomeView.id);
                          // ShowSnackBar(context, "User registered Successfully", Colors.green);
 
@@ -155,12 +156,5 @@ class _SignUpViewState extends State<SignUpView> {
     );
   }
 
-  Future<void> RegisterUser(TextEditingController emailController,
-      TextEditingController passwordController) async {
-    //This code is used to create User account on Firebase
-    var auth = FirebaseAuth.instance;
-    UserCredential userCredential = await auth.createUserWithEmailAndPassword(
-        email: emailController.text,
-        password: passwordController.text);
-  }
+
 }

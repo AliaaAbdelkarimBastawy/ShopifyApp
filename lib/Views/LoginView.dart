@@ -8,6 +8,7 @@ import 'package:shopify_app/Views/SignUpView.dart';
 import '../components/CustomisedBtn.dart';
 import '../components/CustomisedTxtFormField.dart';
 import '../helper/show_snack_bar.dart';
+import '../services/LoginUser.dart';
 import 'HomeView.dart';
 
 class LoginView extends StatefulWidget {
@@ -92,13 +93,12 @@ class _LoginViewState extends State<LoginView> {
                   onPressed: () async{
                     if(formKey.currentState!.validate())
                     {
-      
                       setState(() {
                         isLoading = true;
                       });
                       try
                       {
-                        await LoginUser(emailController, passwordController);
+                        await LoginUserService.LoginUser(emailController, passwordController);
                         Navigator.pushNamed(context, HomeView.id);
                         // ShowSnackBar(context, "User Logged Successfully", Colors.green);
       
@@ -150,12 +150,5 @@ class _LoginViewState extends State<LoginView> {
     );
   }
 
-  Future<void> LoginUser(TextEditingController emailController,
-      TextEditingController passwordController) async {
-    //This code is used to create User account on Firebase
-    var auth = FirebaseAuth.instance;
-    UserCredential userCredential = await auth.signInWithEmailAndPassword(
-        email: emailController.text,
-        password: passwordController.text);
-  }
+
 }

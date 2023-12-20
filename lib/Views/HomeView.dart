@@ -5,9 +5,13 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:shopify_app/models/Ads.dart';
 import 'package:shopify_app/models/Category.dart';
+import 'package:shopify_app/services/GetAdsService.dart';
 import '../components/CustomAdsItem.dart';
 import '../components/CustomCategroyItem.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:shopify_app/services/GetCategoryService.dart';
+
+
 
 import '../main.dart';
 
@@ -20,91 +24,62 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-  CollectionReference categories = FirebaseFirestore.instance.collection('categories');
-  CollectionReference ads = FirebaseFirestore.instance.collection('ads');
-
-  getCategory() async {
-    try {
-      QuerySnapshot querySnapshot = await categories.get();
-      querySnapshot.docs.forEach((doc) {
-        Provider.of<Model>(context, listen: false)
-            .AddToCategoriesList(CategoryModel.fromJson(doc));
-      });
-    } catch (e) {
-      print('Error fetching Categories: $e');
-    }
-  }
-
-  getAds() async {
-    try {
-      QuerySnapshot querySnapshot = await ads.get();
-      querySnapshot.docs.forEach((doc) {
-        Provider.of<Model>(context, listen: false)
-            .AddToAdsList(AdsModel.fromJson(doc));
-      });
-    } catch (e) {
-      print('Error fetching Ads: $e');
-    }
-  }
 
   @override
   void initState() {
-    getCategory();
-    getAds();
+    GetCategoriesService.getCategory(context);
+    GetAdsService.getAds(context);
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor:  Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
         actions:const [
-          Stack(
-            children: [
-              SizedBox(
-                height: 26,
-                width: 40,
-              ),
-              Icon(
-                FontAwesomeIcons.comment,
-                size: 20,
-              ),
-              Positioned(
-                right: 5,
-                bottom: 0,
-                child: CircleAvatar(
-                  backgroundColor: Colors.red,
-                  radius: 8,
-                  child: Center(child:
-                  Text("1", style: TextStyle(color: Colors.white, fontSize: 12),)),
+          SizedBox(
+            height: 24,
+            width: 35,
+            child:Stack(
+             children: [
+               Icon(
+                 FontAwesomeIcons.comment,
+                 size: 20,
+               ),
+               Positioned(
+                 right: 5,
+                 bottom: 0,
+                 child: CircleAvatar(
+                   backgroundColor: Colors.red,
+                   radius: 8,
+                   child: Center(child:
+                   Text("1", style: TextStyle(color: Colors.white, fontSize: 12),)),
+                 ),
+               )
+             ],
+          ),),
+          SizedBox(
+            height: 24,
+            width: 35,
+            child:Stack(
+              children: [
+                Icon(
+                  Icons.notifications_none_rounded,
                 ),
-              )
-            ],
-          ),
-          Stack(
-            children: [
-              SizedBox(
-                height: 30,
-                width: 40,
-              ),
-              Icon(
-                Icons.notifications_none_outlined,
-                size: 25,
-                color: Colors.black,
-              ),
-              Positioned(
-                right: 5,
-                bottom: 0,
-                child: CircleAvatar(
-                  backgroundColor: Colors.red,
-                  radius: 8,
-                  child: Center(child:
-                  Text("1", style: TextStyle(color: Colors.white, fontSize: 12),)),
-                ),
-              )
-            ],
-          ),
+                Positioned(
+                  right: 5,
+                  bottom: 0,
+                  child: CircleAvatar(
+                    backgroundColor: Colors.red,
+                    radius: 8,
+                    child: Center(child:
+                    Text("1", style: TextStyle(color: Colors.white, fontSize: 12),)),
+                  ),
+                )
+              ],
+            ),),
 
         ],
         automaticallyImplyLeading: false,
@@ -166,4 +141,6 @@ class _HomeViewState extends State<HomeView> {
           ])),
     );
   }
+
+
 }

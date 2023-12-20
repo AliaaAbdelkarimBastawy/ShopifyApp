@@ -13,7 +13,7 @@ class CustomCategoryItem extends StatelessWidget {
     return Column(
       children: [
         const CircleAvatar(
-          backgroundColor: Colors.pink,
+          backgroundImage: AssetImage("assets/images/dresses.png"),
           radius: 40,
         ),
         Text(categoryName),
