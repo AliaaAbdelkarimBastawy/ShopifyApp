@@ -8,6 +8,7 @@ import 'package:shopify_app/Views/SignUpView.dart';
 import '../components/CustomisedBtn.dart';
 import '../components/CustomisedTxtFormField.dart';
 import '../helper/show_snack_bar.dart';
+import 'HomeView.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({Key? key}) : super(key: key);
@@ -98,7 +99,8 @@ class _LoginViewState extends State<LoginView> {
                       try
                       {
                         await LoginUser(emailController, passwordController);
-                        ShowSnackBar(context, "User Logged Successfully", Colors.green);
+                        Navigator.pushNamed(context, HomeView.id);
+                        // ShowSnackBar(context, "User Logged Successfully", Colors.green);
       
                       } on FirebaseAuthException catch(ex)
                       {

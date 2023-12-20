@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopify_app/Views/HomeView.dart';
 import 'package:shopify_app/Views/LoginView.dart';
 import 'package:shopify_app/Views/SignUpView.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -13,6 +14,7 @@ void main() async{
     routes: {
       LoginView.id : (Context) => const LoginView(),
       SignUpView.id : (Context) => const SignUpView(),
+      HomeView.id : (Context) =>  HomeView(),
     },
     debugShowCheckedModeBanner: false,
     initialRoute: LoginView.id,

@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+import 'package:shopify_app/Views/HomeView.dart';
 import '../components/CustomisedBtn.dart';
 import '../components/CustomisedTxtFormField.dart';
 import '../helper/show_snack_bar.dart';
@@ -83,7 +84,8 @@ class _SignUpViewState extends State<SignUpView> {
                        try
                        {
                          await RegisterUser(emailController, passwordController);
-                         ShowSnackBar(context, "User registered Successfully", Colors.green);
+                         Navigator.pushNamed(context, HomeView.id);
+                         // ShowSnackBar(context, "User registered Successfully", Colors.green);
 
                        }
                        on FirebaseAuthException catch(ex)
