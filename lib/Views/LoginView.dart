@@ -137,7 +137,7 @@ class _LoginViewState extends State<LoginView> {
                       style: TextStyle(fontSize: 16),),
                     TextButton(onPressed: (){
                       Navigator.push(context, MaterialPageRoute(builder:
-                          (builder)=> const SignUpView()));
+                          (builder)=>  SignUpView()));
                     }, child:const Text("Sign Up", style: TextStyle(fontSize: 16,
                         fontWeight: FontWeight.bold,
                         color:Color(0XFFFF6A6A) ),),)

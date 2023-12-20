@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +10,7 @@ import '../helper/show_snack_bar.dart';
 import 'LoginView.dart';
 
 class SignUpView extends StatefulWidget {
-  const SignUpView({Key? key}) : super(key: key);
+   SignUpView({Key? key}) : super(key: key);
 
   static String id = 'SignUpView';
 
