@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:shopify_app/models/Ads.dart';
 import 'package:shopify_app/models/Category.dart';
 import '../components/CustomAdsItem.dart';
 import '../components/CustomCategroyItem.dart';
@@ -57,19 +58,41 @@ class HomeView extends StatelessWidget {
 
             }),
               const SizedBox(height: 20,),
-              // const SizedBox(height: 20,),
-            SizedBox(
-              height: 180,
-              child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index){
-                    return const Padding(
-                      padding: EdgeInsets.only(left: 8.0),
-                      child: CustomAdsItem(),
+
+            FutureBuilder <QuerySnapshot>(
+                future: ads.get(),
+                builder: (context, snapshot)
+                {
+
+                  List<AdsModel> adsList =[];
+
+                  if(snapshot.hasData)
+                  {
+                    for(int i =0; i<snapshot.data!.docs.length; i++)
+                    {
+                      adsList.add(AdsModel.fromJson(snapshot.data!.docs[i]));
+                    }
+                    return SizedBox(
+                      height: 180,
+                      child: ListView.builder(
+                          itemCount: adsList.length,
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: (context, index){
+                            return  Padding(
+                              padding: const EdgeInsets.only(left: 8.0),
+                              child: CustomAdsItem(adsName:adsList[index].adsName, ),
+                            );
+                          }
+                      ),
                     );
                   }
-              ),
-            ),
+                  else
+                  {
+                    return const Text("Ads data is loading!");
+                  }
+
+                }),
+              // const SizedBox(height: 20,),
 
         ]
             )

@@ -2,8 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CustomAdsItem extends StatelessWidget {
-  const CustomAdsItem({
+  String adsName;
+
+   CustomAdsItem({
     super.key,
+    required this.adsName
   });
 
   @override
@@ -18,7 +21,7 @@ class CustomAdsItem extends StatelessWidget {
           height: 120,
           width: 220,
         ),
-        const Text("Ad")
+         Text(adsName)
       ],
     );
   }
