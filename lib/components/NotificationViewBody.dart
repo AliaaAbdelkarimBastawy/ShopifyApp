@@ -37,7 +37,7 @@ class NotificationViewBody extends StatelessWidget {
                       int index) {
                       return const Padding(
                         padding: EdgeInsets.only(left: 110,right: 16.0),
-                        child: Divider(thickness: 2,
+                        child: Divider(thickness: 1,
                           color: Color(0xFFBBBBBB),
                             height: 10,),
                       );
