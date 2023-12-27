@@ -5,6 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:shopify_app/Views/ProductDetailsView.dart';
 import 'package:shopify_app/components/CartViewBody.dart';
+import 'package:shopify_app/components/NotificationViewBody.dart';
 import 'package:shopify_app/models/Ads.dart';
 import 'package:shopify_app/models/Category.dart';
 import 'package:shopify_app/services/GetAdsService.dart';
@@ -97,7 +98,7 @@ class _HomeViewState extends State<HomeView> {
       ),
       body:Column(
         children: [
-          Expanded(child: CartViewBody()),
+          Expanded(child: NotificationViewBody()),
 
           Container(
             height: 75,
