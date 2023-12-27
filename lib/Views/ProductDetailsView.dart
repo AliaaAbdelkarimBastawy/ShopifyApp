@@ -143,6 +143,7 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                     elevation: 0,
                     toolbarHeight: 1,
                     bottom: TabBar(
+                      padding: EdgeInsets.symmetric(horizontal: 32),
                       indicator: BoxDecoration(
                         color: Colors.white, // Customize the indicator color here
                         borderRadius:

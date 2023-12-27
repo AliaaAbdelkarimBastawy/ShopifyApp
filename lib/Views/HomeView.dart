@@ -3,6 +3,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
+import 'package:shopify_app/Views/ProductDetailsView.dart';
+import 'package:shopify_app/components/CartViewBody.dart';
 import 'package:shopify_app/models/Ads.dart';
 import 'package:shopify_app/models/Category.dart';
 import 'package:shopify_app/services/GetAdsService.dart';
@@ -14,6 +16,7 @@ import 'package:shopify_app/services/GetCategoryService.dart';
 
 
 import '../components/CustomProductsItem.dart';
+import '../components/HomeViewBody.dart';
 import '../main.dart';
 
 class HomeView extends StatefulWidget {
@@ -36,133 +39,71 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0XFFF3F4F7),
+      backgroundColor: const Color(0xFFF5F6F8),
       appBar: AppBar(
-        backgroundColor:const Color(0XFFF3F4F7),
+        elevation: 0,
+        backgroundColor:const Color(0xFFF5F6F8),
         actions:const [
-          SizedBox(
-            height: 24,
-            width: 35,
-            child:Stack(
-             children: [
-               Icon(
-                 FontAwesomeIcons.comment,
-                 size: 20,
-               ),
-               Positioned(
-                 right: 5,
-                 bottom: 0,
-                 child: CircleAvatar(
-                   backgroundColor: Colors.red,
-                   radius: 8,
-                   child: Center(child:
-                   Text("1", style: TextStyle(color: Colors.white, fontSize: 12),)),
+          Center(
+            child: SizedBox(
+              height: 24,
+              width: 35,
+              child:Stack(
+               children: [
+                 Icon(
+                   FontAwesomeIcons.comment,
+                   color: Colors.black,
+                   size: 20,
                  ),
-               )
-             ],
-          ),),
-          SizedBox(
-            height: 24,
-            width: 35,
-            child:Stack(
-              children: [
-                Icon(
-                  Icons.notifications_none_rounded,
-                ),
-                Positioned(
-                  right: 5,
-                  bottom: 0,
-                  child: CircleAvatar(
-                    backgroundColor: Colors.red,
-                    radius: 8,
-                    child: Center(child:
-                    Text("1", style: TextStyle(color: Colors.white, fontSize: 12),)),
-                  ),
-                )
-              ],
+                 Positioned(
+                   right: 5,
+                   bottom: 0,
+                   child: CircleAvatar(
+                     backgroundColor: Colors.red,
+                     radius: 8,
+                     child: Center(child:
+                     Text("1", style: TextStyle(color: Colors.white, fontSize: 12),)),
+                   ),
+                 )
+               ],
             ),),
+          ),
+          Center(
+            child: SizedBox(
+              height: 24,
+              width: 35,
+              child:Stack(
+                children: [
+                  Icon(
+                    Icons.notifications_none_rounded,
+                    color: Colors.black,
+                  ),
+                  Positioned(
+                    right: 5,
+                    bottom: 0,
+                    child: CircleAvatar(
+                      backgroundColor: Colors.red,
+                      radius: 8,
+                      child: Center(child:
+                      Text("1", style: TextStyle(color: Colors.white, fontSize: 12),)),
+                    ),
+                  )
+                ],
+              ),),
+          ),
 
         ],
         automaticallyImplyLeading: false,
       ),
-      body: Padding(
-          padding: const EdgeInsets.only(left: 8, right: 8),
-          child: Column(
-              children: [
-                const Align(
-                alignment: Alignment.topLeft,
-                child: Text(
-                  "Categories",
-                  style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
-                )),
-                const SizedBox(
-              height: 8,
-            ),
-                Consumer<Model>(
-              builder: (BuildContext context, Model value, Widget? child) {
-                return SizedBox(
-                  height: 100,
-                  child: ListView.builder(
-                      itemCount: value.categoriesList.length,
-                      scrollDirection: Axis.horizontal,
-                      itemBuilder: (context, index) {
-                        return Padding(
-                          padding: const EdgeInsets.only(left: 8.0),
-                          child: CustomCategoryItem(
-                            categoryName:
-                                value.categoriesList[index].categoryName,
-                          ),
-                        );
-                      }),
-                );
-              },
-            ),
-                const SizedBox(
-                  height: 10,
-                ),
-                const Align(
-                    alignment: Alignment.topLeft,
-                    child: Text(
-                      "Latest",
-                      style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
-                    )),
-                const SizedBox(height: 8,),
-                Consumer<Model>(
-              builder: (BuildContext context, Model value, Widget? child) {
-                return SizedBox(
-                  height: 175,
-                  child: ListView.builder(
-                      itemCount: value.adsList.length,
-                      scrollDirection: Axis.horizontal,
-                      itemBuilder: (context, index) {
-                        return Padding(
-                          padding: const EdgeInsets.only(left: 8.0),
-                          child: CustomAdsItem(
-                            adsName: value.adsList[index].adsName,
-                          ),
-                        );
-                      }),
-                );
-              },
-            ),
-                const SizedBox(
-                  height: 10,
-                ),
-                SizedBox(
-                  height: 170,
-                  child: ListView.builder(
-                      itemCount: 4,
-                      scrollDirection: Axis.horizontal,
-                      itemBuilder: (context, index) {
-                        return const Padding(
-                          padding: EdgeInsets.only(left: 8.0),
-                          child: CustomProductsItem()
-                        );
-                      }),
-                ),
+      body:Column(
+        children: [
+          Expanded(child: CartViewBody()),
 
-            // const SizedBox(height: 20,),
-          ])),
+          Container(
+            height: 75,
+            color: Colors.blueGrey,),
+        ],
+      )
     );
   }
 

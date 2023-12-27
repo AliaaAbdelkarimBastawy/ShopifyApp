@@ -29,7 +29,7 @@ void main() async{
       },
 
       debugShowCheckedModeBanner: false,
-      initialRoute: ProductDetailsView.id,
+      initialRoute: HomeView.id,
     ), ));
 }
 
