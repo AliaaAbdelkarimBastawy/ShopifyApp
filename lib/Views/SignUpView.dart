@@ -20,6 +20,8 @@ class SignUpView extends StatefulWidget {
 }
 
 class _SignUpViewState extends State<SignUpView> {
+
+
   @override
   Widget build(BuildContext context) {
     TextEditingController emailController = TextEditingController();
@@ -86,7 +88,7 @@ class _SignUpViewState extends State<SignUpView> {
                        try
                        {
                          await RegisterUserService.RegisterUser(emailController, passwordController);
-                         Navigator.pushNamed(context, HomeView.id);
+                         Navigator.pushNamed(context, HomeView.id, arguments: emailController.text);
                          // ShowSnackBar(context, "User registered Successfully", Colors.green);
 
                        }
@@ -123,8 +125,7 @@ class _SignUpViewState extends State<SignUpView> {
                   const Text("Already have an account?", style: TextStyle(fontSize: 16),),
 
                   TextButton(onPressed: (){
-                    Navigator.push(context, MaterialPageRoute(builder:
-                        (builder)=> const LoginView()));
+                    Navigator.pushNamed(context, LoginView.id);
                   }, child:const Text("Login", style: TextStyle(fontSize: 16,
                       fontWeight: FontWeight.bold,
                       color:Color(0XFFFF6A6A) ),),)
@@ -155,6 +156,5 @@ class _SignUpViewState extends State<SignUpView> {
       ),
     );
   }
-
 
 }

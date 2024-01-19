@@ -1,11 +1,19 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:shopify_app/models/CartModel.dart';
 
-class CartItem extends StatelessWidget {
-  const CartItem({
-    super.key,
-  });
+import '../main.dart';
 
+class CartItem extends StatefulWidget {
+  CartModel model;
+  CartItem({super.key, required this.model});
+
+  @override
+  State<CartItem> createState() => _CartItemState();
+}
+
+class _CartItemState extends State<CartItem> {
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -21,69 +29,117 @@ class CartItem extends StatelessWidget {
           child: CircleAvatar(
             backgroundColor: Colors.white,
             radius: 50,
-            child: Image.asset('assets/images/dresses.png',
+            child: Image.network(
+              widget.model.image,
               height: 70,
-              width: 70,),
-
-          ),),
-        const SizedBox(width: 20,),
-        const Column(
+              width: 70,
+            ),
+          ),
+        ),
+        const SizedBox(
+          width: 20,
+        ),
+        Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('Faux Sued Ankle Boots',
-              style: TextStyle(fontWeight: FontWeight.bold,
-                  color: Colors.black54,
-                  fontSize: 18
-              ),),
-            SizedBox(height: 4,),
-            Row(children: [
-              Text('4.5,', style: TextStyle(
+            Text(
+              widget.model.name,
+              style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   color: Colors.black54,
-                  fontSize: 18
-              )),
-              SizedBox(width: 4,),
-              Text('Hot pink', style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black54,
-                  fontSize: 18
-              )),
-            ],),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 16.0),
-              child: Text(r'$49.99', style: TextStyle(
-                  color: Colors.redAccent,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18
-              ),),
+                  fontSize: 18),
+            ),
+            const SizedBox(
+              height: 4,
             ),
             Row(
               children: [
-                CircleAvatar(
-                  backgroundColor: Color(0xFFBBBBBB),
-                  radius: 15,
-                  child: Icon(Icons.remove, color: Colors.white,),
+                Text(widget.model.size,
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black54,
+                        fontSize: 18)),
+                const SizedBox(
+                  width: 4,
                 ),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 8.0),
-                  child: Text('1', style: TextStyle(fontSize: 18),),
-                ),
-                CircleAvatar(
-                  backgroundColor: Color(0xFFBBBBBB),
-                  radius: 15,
-                  child: Icon(Icons.add, color: Colors.white,),),
-              ],),
-            SizedBox(width: 220,
-              child: Divider(height: 35,
-                thickness: 1,
-                color: Colors.grey,),
+                Text(widget.model.color,
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black54,
+                        fontSize: 18)),
+              ],
             ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 16.0),
+              child: Text(
+                "\$ ${widget.model.price}",
+                style: const TextStyle(
+                    color: Colors.redAccent,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18),
+              ),
+            ),
+            Consumer<Model>(
+                builder: (BuildContext context, Model value, Widget? child) {
+              return Row(
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      value.decreaseQuantityOfProduct(widget.model);
+                      setState(() {
 
+                      });
+
+                    },
+                    child: const CircleAvatar(
+                      backgroundColor: Color(0xFFBBBBBB),
+                      radius: 15,
+                      child: Icon(
+                        Icons.remove,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: Text(
+                      '${widget.model.quantity}',
+                      style: const TextStyle(fontSize: 18),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      value.increaseQuantityOfProduct(widget.model);
+                      setState(() {
+
+                      });
+
+                    },
+                    child: const CircleAvatar(
+                      backgroundColor: Color(0xFFBBBBBB),
+                      radius: 15,
+                      child: Icon(
+                        Icons.add,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ],
+              );
+            }),
+            const SizedBox(
+              width: 220,
+              child: Divider(
+                height: 35,
+                thickness: 1,
+                color: Colors.grey,
+              ),
+            ),
           ],
         ),
-
-      ],);
+      ],
+    );
   }
 }

@@ -1,11 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class NotificationItem extends StatelessWidget {
-  const NotificationItem({Key? key}) : super(key: key);
+  String title;
+  String description;
+  DateTime time;
+   NotificationItem({Key? key, required this.title, required this.description, required this.time}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -26,14 +31,16 @@ class NotificationItem extends StatelessWidget {
 
         Container(
           width: 170,
-          child: const Column(
+          child:  Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text("Smiley's Store marked your order #1982984 as Shipped",
+              Text(title, style: const TextStyle(fontWeight: FontWeight.bold),),
+              const SizedBox(height: 4,),
+              Text(description,
                 maxLines: 2,
-                style: TextStyle(fontWeight: FontWeight.bold,
+                style: const TextStyle(fontWeight: FontWeight.bold,
                     color: Colors.black54,
                     fontSize: 16
                 ),),
@@ -45,7 +52,9 @@ class NotificationItem extends StatelessWidget {
             ],
           ),
         ),
-        Text('9:20 AM'),
+        Text('${time.hour}: ${time.minute} ${ DateFormat('a').format(time)}'),
       ],);
   }
 }
+
+

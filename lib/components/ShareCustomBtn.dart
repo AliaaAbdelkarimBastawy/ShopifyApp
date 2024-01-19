@@ -35,25 +35,22 @@ class ShareCustomBtn extends StatelessWidget {
         elevation: 20,
         child:  Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8.0),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                 Text(btnTxt,
-                  style: TextStyle(color:txtColor, fontWeight: FontWeight.bold),),
-                const SizedBox(width: 8,),
-                CircleAvatar(
-                  backgroundColor: txtColor,
-                  radius: 16,
-                  child: IconButton(
-                      onPressed: (){},
-                      icon:  Center(child: Icon(btnIcon,
-                        color: btnColor, size: 16,))),
-                )
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+               Text(btnTxt,
+                style: TextStyle(color:txtColor, fontWeight: FontWeight.bold, fontSize: 13),),
+              const SizedBox(width: 8,),
+              CircleAvatar(
+                backgroundColor: txtColor,
+                radius: 16,
+                child: IconButton(
+                    onPressed: (){},
+                    icon:  Center(child: Icon(btnIcon,
+                      color: btnColor, size: 16,))),
+              )
 
-              ],                ),
-          ),
+            ],                ),
         ),
       ),
     );

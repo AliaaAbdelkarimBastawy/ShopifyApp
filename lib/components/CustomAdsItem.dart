@@ -3,10 +3,11 @@ import 'package:flutter/material.dart';
 
 class CustomAdsItem extends StatelessWidget {
   String adsName;
-
+  String adsImage;
    CustomAdsItem({
     super.key,
-    required this.adsName
+    required this.adsName,
+     required this.adsImage
   });
 
   @override
@@ -15,8 +16,8 @@ class CustomAdsItem extends StatelessWidget {
       children: [
         Container(
           decoration: BoxDecoration(
-            image: const DecorationImage(
-                image: AssetImage("assets/images/summer.webp"),
+            image:  DecorationImage(
+                image: NetworkImage(adsImage),
                 fit: BoxFit.cover
             ),
             borderRadius: BorderRadius.circular(16),
@@ -53,7 +54,8 @@ class CustomAdsItem extends StatelessWidget {
                     ),
                     CircleAvatar(radius: 20,
                       backgroundColor: Colors.pink,
-                      child: Icon(Icons.arrow_forward_ios_outlined, color: Colors.white,),
+                      child: Icon(Icons.arrow_forward_ios_outlined,
+                        color: Colors.white, size: 16,),
                     ),
                   ],),
                 ),)

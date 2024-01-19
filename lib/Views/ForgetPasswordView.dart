@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -6,6 +7,8 @@ import '../components/CustomisedTxtFormField.dart';
 
 class ForgetPasswordView extends StatelessWidget {
   const ForgetPasswordView({Key? key}) : super(key: key);
+
+  static String id = 'ForgetPasswordView';
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +37,40 @@ class ForgetPasswordView extends StatelessWidget {
               validator: (data ) {  },),
             const SizedBox(height: 16,),
              CustomisedBtn(btnTxt: 'Reset Password', btnColor: Color(0XFFFF6A6A),
-              txtColor: Colors.white, onPressed: () {  },),
+              txtColor: Colors.white, onPressed: () async {
+                 var auth = FirebaseAuth.instance;
+                 try {
+                   await auth.sendPasswordResetEmail(email: emailController.text.trim());
+                  if(context.mounted)
+                    {
+                      showDialog(context: context, builder: (context)
+                      {
+                        return AlertDialog(
+                          backgroundColor: Colors.green,
+                          content: Container(
+                            width: 100,
+                              child: const Text('Password reset link sent!, Check your Email', style: TextStyle(color: Colors.white),)),
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                        );
+                      });
+                    }
+                 }
+                 on FirebaseAuthException catch(e)
+                 {
+
+                 if(context.mounted)
+                   {
+                     showDialog(context: context, builder: (context)
+                     {
+                       return AlertDialog(
+                         backgroundColor: Colors.red,
+                         content: Text(e.message.toString(), style: const TextStyle(color: Colors.white),),
+                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                       );
+                     });
+                   }
+                 }
+               },),
             const SizedBox(height: 8,),
           ],
         ),

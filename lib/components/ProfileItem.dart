@@ -27,9 +27,9 @@ class ProfileItem extends StatelessWidget {
                 const Spacer(),
                 const CircleAvatar(
                   radius: 14,
-                  backgroundColor: Color(0xFFE3E5E7),
+                  backgroundColor: Colors.black,
                   child: Icon(Icons.arrow_forward_ios_outlined,
-                    color: Colors.black, size: 14,),)
+                    color: Colors.white, size: 14,),)
               ],
             ),
           ),

@@ -2,10 +2,14 @@
 class CategoryModel
 {
   final String categoryName;
-  CategoryModel({required this.categoryName});
+  final String categoryImage;
+  CategoryModel({required this.categoryName, required this.categoryImage});
 
   factory CategoryModel.fromJson(jsonData)
   {
-    return CategoryModel(categoryName: jsonData['name']);
+    return CategoryModel(
+        categoryName: jsonData['name'],
+        categoryImage: jsonData['image'],
+    );
   }
 }
